@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck43f2f8dlvyj"]
+
+[ext_resource type="Script" uid="uid://vdghv1wudgcq" path="res://Scripts/circle_draw.gd" id="1_7nh6h"]
+[ext_resource type="Script" uid="uid://bpgd88tno1gvf" path="res://Scripts/ball.gd" id="1_eb1ap"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rmwm4"]
+
+[node name="Ball" type="CharacterBody2D"]
+motion_mode = 1
+slide_on_ceiling = false
+floor_stop_on_slope = false
+floor_block_on_wall = false
+platform_on_leave = 2
+platform_floor_layers = 0
+script = ExtResource("1_eb1ap")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rmwm4")
+
+[node name="CircleDraw2D" type="Node2D" parent="."]
+script = ExtResource("1_7nh6h")
+metadata/_custom_type_script = "uid://vdghv1wudgcq"
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
