@@ -6,7 +6,6 @@ var radius: float = 10.0:
 		radius = max(v, 1.0)
 		queue_redraw()
 
-
 var color: Color = Color.WHITE:
 	set(v):
 		color = v

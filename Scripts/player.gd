@@ -97,8 +97,8 @@ func start(new_position: Vector2, left_x_border: float, right_x_border: float, d
 
 func stop() -> void:
 	can_move = false
-	collision_shape.disabled = true
 
-#func change_length(length_diff: int) -> void:
-	#var tween = create_tween()
-	#tween.tween_property(self, "length", self.length + length_diff, 0.3)
+
+func change_length(length_diff: int) -> void:
+	var tween = create_tween()
+	tween.tween_property(self, "length", self.length + length_diff, 0.3)
