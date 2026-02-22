@@ -31,7 +31,6 @@ var can_move: bool = false
 func _ready() -> void:
 	_physics_setup()
 	_apply_visuals()
-	start(Vector2.ONE * 600, Vector2.ONE) # DELETE THIS
 
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
@@ -59,11 +58,11 @@ func start(new_position: Vector2, direction: Vector2, start_speed: float = 600.0
 	can_move = false
 
 	set_deferred("global_position", new_position)
-
+	set_deferred("linear_velocity", Vector2.ZERO)
 	await get_tree().create_timer(delay_sec).timeout
 
 	can_move = true
-	sleeping = false
+	freeze = false
 
 	linear_velocity = direction.normalized() * start_speed
 
