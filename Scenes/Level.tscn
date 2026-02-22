@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgtfbldog6msx"]
+
+[ext_resource type="Script" uid="uid://b833g2aqy6tvf" path="res://Scripts/level.gd" id="1_0ba56"]
+[ext_resource type="PackedScene" uid="uid://wyfhhsx68l5x" path="res://Scenes/Player.tscn" id="3_xylue"]
+[ext_resource type="PackedScene" uid="uid://ck43f2f8dlvyj" path="res://Scenes/Ball.tscn" id="4_tj5wv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sfrck"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0ba56"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vsvp5"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8rbpu"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_0ba56")
+boundary = Rect2(200, 100, 1520, 980)
+player_scene = ExtResource("3_xylue")
+ball_scene = ExtResource("4_tj5wv")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(0, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("WorldBoundaryShape2D_sfrck")
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2(960, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+shape = SubResource("WorldBoundaryShape2D_0ba56")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(1920, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("WorldBoundaryShape2D_vsvp5")
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2(960, 1080)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+shape = SubResource("WorldBoundaryShape2D_8rbpu")
