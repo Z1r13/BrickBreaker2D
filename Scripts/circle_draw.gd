@@ -1,7 +1,6 @@
 class_name CircleDraw2D
 extends Node2D
 
-
 var radius: float = 10.0:
 	set(v):
 		radius = max(v, 1.0)
