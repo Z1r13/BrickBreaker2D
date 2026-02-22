@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgtfbldog6msx"]
+[gd_scene load_steps=9 format=3 uid="uid://dgtfbldog6msx"]
 
 [ext_resource type="Script" uid="uid://b833g2aqy6tvf" path="res://Scripts/level.gd" id="1_0ba56"]
+[ext_resource type="Script" uid="uid://def1e1ktl53u3" path="res://Scripts/death_zone.gd" id="2_vsvp5"]
 [ext_resource type="PackedScene" uid="uid://wyfhhsx68l5x" path="res://Scenes/Player.tscn" id="3_xylue"]
 [ext_resource type="PackedScene" uid="uid://ck43f2f8dlvyj" path="res://Scenes/Ball.tscn" id="4_tj5wv"]
 
@@ -13,7 +14,8 @@ normal = Vector2(0, 1)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vsvp5"]
 normal = Vector2(-1, 0)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8rbpu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rbpu"]
+size = Vector2(1920, 50)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_0ba56")
@@ -39,8 +41,9 @@ position = Vector2(1920, 540)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
 shape = SubResource("WorldBoundaryShape2D_vsvp5")
 
-[node name="BottomWall" type="StaticBody2D" parent="."]
-position = Vector2(960, 1080)
+[node name="DeathZone" type="Area2D" parent="."]
+script = ExtResource("2_vsvp5")
+color = Color(0, 1, 1, 0.5882353)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
-shape = SubResource("WorldBoundaryShape2D_8rbpu")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+shape = SubResource("RectangleShape2D_8rbpu")
