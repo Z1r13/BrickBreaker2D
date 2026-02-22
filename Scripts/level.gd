@@ -89,13 +89,14 @@ func _create_bricks() -> void:
 		printerr("Brick scene empty!")
 		return
 
+	var brick_container := Node2D.new()
 	var brick_width := (boundary.size.x - brick_padding * 2.0 - brick_offset * float(brick_cols)) / float(brick_cols)
 	var brick_height := (boundary.size.y / 2.0 - brick_padding * 2.0 - brick_offset * float(brick_rows)) / float(brick_rows)
 
 	for i in range(brick_cols):
 		for j in range(brick_rows):
 			var brick := brick_scene.instantiate() as Brick
-			add_child(brick)
+			brick_container.add_child(brick)
 			brick.size = Vector2(brick_width, brick_height)
 			brick.position = Vector2(
 				boundary.position.x + brick_padding + (brick_width + brick_offset) * i + brick_width / 2.0,
@@ -103,6 +104,8 @@ func _create_bricks() -> void:
 			)
 			_brick_count += 1
 			brick.die.connect(on_brick_die)
+
+	add_child(brick_container)
 
 
 func _set_boundary() -> void:
