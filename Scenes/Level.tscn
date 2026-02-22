@@ -20,10 +20,9 @@ size = Vector2(1920, 50)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_0ba56")
-boundary = Rect2(400, 0, 1320, 1080)
+boundary = Rect2(100, 0, 1720, 1080)
 brick_scene = ExtResource("2_8rbpu")
-brick_rows = 10
-brick_cols = 20
+brick_cols = 15
 player_scene = ExtResource("3_xylue")
 ball_scene = ExtResource("4_tj5wv")
 

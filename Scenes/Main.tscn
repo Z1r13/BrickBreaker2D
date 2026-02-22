@@ -1,7 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqsaj61bkxdc8"]
+[gd_scene load_steps=6 format=3 uid="uid://bqsaj61bkxdc8"]
 
-[ext_resource type="PackedScene" uid="uid://dgtfbldog6msx" path="res://Scenes/Level.tscn" id="1_r150o"]
+[ext_resource type="PackedScene" uid="uid://ck43f2f8dlvyj" path="res://Scenes/Ball.tscn" id="1_r150o"]
+[ext_resource type="Script" uid="uid://b8rrik6ndunm8" path="res://Scripts/main.gd" id="1_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://dgtfbldog6msx" path="res://Scenes/Level.tscn" id="3_pbw6q"]
+[ext_resource type="PackedScene" uid="uid://b046n3rjcg1l8" path="res://Scenes/Brick.tscn" id="4_v1gob"]
+[ext_resource type="PackedScene" uid="uid://h3qavtbrmrll" path="res://Scenes/HUD.tscn" id="5_pbw6q"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_rgh2o")
+ball_scene = ExtResource("1_r150o")
+level_scene = ExtResource("3_pbw6q")
+brick_scene = ExtResource("4_v1gob")
 
-[node name="Level" parent="." instance=ExtResource("1_r150o")]
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.43137255, 0.5294118, 0.37254903, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("5_pbw6q")]
